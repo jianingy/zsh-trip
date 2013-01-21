@@ -1,0 +1,12 @@
+PERL_LOCAL_LIB_ROOT=(~/local/site_perl)
+
+[[ ! -d "$PERL_LOCAL_LIB_ROOT" ]] && return
+PERL_MB_OPT="--install_base $PERL_LOCAL_LIB_ROOT";
+PERL_MM_OPT="INSTALL_BASE=$PERL_LOCAL_LIB_ROOT";
+
+for _lib in $PERL_LOCAL_LIB_ROOT/*(/); do
+    PERL5LIB=($_lib: PERL5LIB)
+done
+
+export PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT PERL5LIB
+path=($PERL_LOCAL_LIB_ROOT/bin $path)
