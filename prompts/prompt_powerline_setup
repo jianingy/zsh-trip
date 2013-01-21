@@ -1,3 +1,6 @@
+# PSVAR
+# - [1] :: vcs info
+# - [2] :: SSH_CONNECTION HOST
 function prompt_powerline_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -6,6 +9,10 @@ function prompt_powerline_precmd {
   # Xfer vcs info through psvar
   psvar=()
   [[ -n $vcs_info_msg_0_ ]] && psvar[1]=$(print -P "$vcs_info_msg_0_" |sed "s/\^\[/\033/")
+  if [[ -n "$SSH_CONNECTION" ]]; then
+     ssh_from=(${=SSH_CONNECTION})
+	 psvar[2]=" ← $ssh_from[1]"
+  fi
 }
 
 function prompt_powerline_setup {
@@ -33,7 +40,7 @@ function prompt_powerline_setup {
   p_vcs="%(1V.%K{$color4}$narrow%f %1v %F{$color4}%k$narrow.$narrow)"
 
   prompt="%F{$activefg}%K{$color1} %n at %U%M%u %k%F{$color1}%K{$color2}$narrow%f %~ %k%F{$color2}$p_vcs %f"
-  RPS1=" %F{$color2}$rarrow%f%K{$color2} %j %F{$color1}$rarrow%F{233}%K{$color1}%D{%a %B %d}, %T %k%f "
+  RPS1=" %F{$color2}$rarrow%f%K{$color2} %j %F{$color1}$rarrow%F{233}%K{$color1}%(2V.%2v.) "
   PS2="%F{$activefg}%K{$color3} %_ %k%F{$color3}$narrow%f%k "
 
   add-zsh-hook precmd prompt_powerline_precmd
