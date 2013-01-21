@@ -25,9 +25,11 @@ done
 [[ $EMACS = t ]] && unsetopt zle
 
 # Load MOTD {{{
-for motd in ~/.motd.d/*; do
-    cat $motd
-done
+if [[ -d ~/.motd.d ]]; then
+    for motd in ~/.motd.d/*; do
+        cat $motd
+    done
+fi
 # }}}
 
 prompt powerline
