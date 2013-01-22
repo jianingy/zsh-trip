@@ -8,8 +8,9 @@ fpath=(~/.zsh/functions ~/.zsh/completions ~/.zsh/prompts $fpath)
 bindkey -e
 
 # Load Modules {{{
-autoload -U colors promptinit zmv zcalc zsh-mime-setup
+autoload -Uz colors compinit promptinit zmv zcalc zsh-mime-setup
 colors
+compinit
 promptinit
 zsh-mime-setup
 # }}}
