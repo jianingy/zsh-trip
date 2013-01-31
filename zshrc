@@ -34,3 +34,5 @@ fi
 # }}}
 
 prompt powerline
+
+[[ -r ~/.zsh.local ]] && source ~/.zsh.local
