@@ -31,10 +31,10 @@ function prompt_powerline_setup {
 
   narrow=⮀
   rarrow=⮂
-  color1=${1:-4}
+  color1=${1:-2}
   color2=${2:-238}
   color3=${3:-6}
-  color4=${4:-2}
+  color4=${4:-4}
   activefg=233
 
   p_vcs="%(1V.%K{$color4}$narrow%f%F{$activefg} %1v %F{$color4}%k$narrow.$narrow)"
