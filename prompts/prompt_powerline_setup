@@ -31,7 +31,11 @@ function prompt_powerline_setup {
 
   narrow=⮀
   rarrow=⮂
-  color1=${1:-2}
+  if [ -z "$SSH_CONNECTION" ]; then
+      color1=${1:-2}
+  else 
+      color1=${1:-3}
+  fi
   color2=${2:-238}
   color3=${3:-6}
   color4=${4:-4}
@@ -39,7 +43,7 @@ function prompt_powerline_setup {
 
   p_vcs="%(1V.%K{$color4}$narrow%f%F{$activefg} %1v %F{$color4}%k$narrow.$narrow)"
 
-  prompt="%F{$activefg}%K{$color1} %n at %U%M%u %k%F{$color1}%K{$color2}$narrow%f %1~ %k%F{$color2}$p_vcs %f"
+  prompt="%F{$activefg}%K{$color1} %n at %U%m%u %k%F{$color1}%K{$color2}$narrow%f %1~ %k%F{$color2}$p_vcs %f"
   RPS1=" %F{$color2}$rarrow%f%K{$color2} %j %F{$color1}$rarrow%F{233}%K{$color1}%(2V.%2v.) "
   PS2="%F{$activefg}%K{$color3} %_ %k%F{$color3}$narrow%f%k "
 
