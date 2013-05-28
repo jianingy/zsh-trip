@@ -5,6 +5,7 @@
 #    path=($GEM/bin $path)
 #fi
 
+path=(~/.rbenv/bin $path)
 if which &>/dev/null rbenv; then
 	eval "$(rbenv init - zsh)"
 fi
